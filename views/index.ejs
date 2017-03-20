@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.js"
+    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>TEST</h1>
+    <script>
+      $(function() {
+        var origin, destination;
+          $.ajax({
+            type: "POST",
+            url: "/api/google/geocode/address",
+            data: {
+              "address": "2000 Market Street Philadelphia, PA 19106"
+            },
+            success: function(response) {
+              origin = response.json.results[0];
+                $.ajax({
+                  type: "POST",
+                  url: "/api/google/geocode/address",
+                  data: {
+                    "address": "3300 Locust Street Philadelphia, PA"
+                  },
+                  success: function(response2) {
+                      destination = response2.json.results[0];
+                      $.ajax({
+                        type: "POST",
+                        url: "/api/google/directions/originAndDestination",
+                        data: {
+                          "origin": origin.geometry.location,
+                          "destination": destination.location
+                        },
+                        success: function(response3) {
+                            console.log(response3);
+                        },
+                        dataType: "json"
+                      });
+                  },
+                  dataType: "json"
+                });
+            },
+            dataType: "json"
+          });
+      });
+      
+    </script>
+  </body>
+</html>

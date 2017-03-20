@@ -4,10 +4,20 @@
   "description": "--- ### Thank you for your interest in this project. We always are looking for contributions so please feel free to submit pull requests and create issues. ---",
   "main": "gulpfile.js",
   "dependencies": {
+    "@google/maps": "^0.3.1",
+    "body-parser": "^1.17.1",
     "browser-sync": "^2.17.2",
     "connect": "^3.5.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
     "gulp": "^3.9.1",
-    "serve-static": "^1.11.1"
+    "lodash": "^4.17.4",
+    "morgan": "^1.8.1",
+    "request": "^2.81.0",
+    "serve-favicon": "^2.4.1",
+    "serve-static": "^1.11.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "browser-sync": "^2.17.2",
