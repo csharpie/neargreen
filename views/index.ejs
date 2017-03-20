@@ -31,14 +31,15 @@
                       $.ajax({
                         type: "POST",
                         url: "/api/google/directions/originAndDestination",
-                        data: {
-                          "origin": origin.geometry.location,
-                          "destination": destination.location
-                        },
+                        data: JSON.stringify({
+                          origin: origin.geometry.location,
+                          destination: destination.geometry.location
+                        }),
                         success: function(response3) {
                             console.log(response3);
                         },
-                        dataType: "json"
+                        dataType: "json",
+                        contentType: "application/json",
                       });
                   },
                   dataType: "json"

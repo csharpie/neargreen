@@ -7,16 +7,14 @@ var Directions      = (function () {
 
     return {
         getByOriginAndDestination: function (req, res) {
-            console.log(JSON.parse(req.body));
+            console.log(req.body.origin);
             googleMapsClient.directions({
                 origin: req.body.origin,
-                destination: req.body.destination,
-                mode: travelModes[2],
-                alternatives: true
+                destination: req.body.destination
             }, function(err, response) {
-                console.log(err);
+                console.log(response);
                 if (!err && response.status === 200) {
-                    return response.json.results;
+                    return response;
                 } else {
                     console.log(err);
                 }

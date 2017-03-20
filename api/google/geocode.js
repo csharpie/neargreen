@@ -12,8 +12,8 @@ var Geocode = (function() {
         googleMapsClient.geocode({
             address: req.body.address
         }, function(err, response) {
-            if (!err && response.json.status == 'OK') {
-                res.end(JSON.stringify(response));
+            if (!err && response.status === 200) {
+                return response.json.results;
             }
         });
       }
